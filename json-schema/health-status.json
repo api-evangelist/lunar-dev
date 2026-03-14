@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/lunar-dev/blob/main/json-schema/health-status.json",
+  "title": "Lunar.dev Health Status",
+  "description": "Represents the health status of a running Lunar Gateway instance, indicating whether the gateway is healthy and ready to process traffic.",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "description": "The health status of the gateway.",
+      "examples": [
+        "healthy"
+      ]
+    }
+  }
+}

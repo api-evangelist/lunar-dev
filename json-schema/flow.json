@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/lunar-dev/blob/main/json-schema/flow.json",
+  "title": "Lunar.dev Flow",
+  "description": "Represents a flow configuration for the Lunar Gateway. Flows are YAML-based definitions that describe how API requests and responses are processed in real time, including traffic management rules such as rate limiting, caching, retry mechanisms, quota enforcement, and request prioritization.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Human-readable name for the flow."
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the flow and its purpose."
+    },
+    "enabled": {
+      "type": "boolean",
+      "description": "Whether the flow is currently active.",
+      "default": true
+    },
+    "filter": {
+      "type": "object",
+      "description": "Filter criteria that determine which requests this flow applies to.",
+      "properties": {
+        "url": {
+          "type": "string",
+          "description": "URL pattern to match against incoming requests."
+        },
+        "method": {
+          "type": "string",
+          "description": "HTTP method to match."
+        },
+        "headers": {
+          "type": "object",
+          "description": "Header key-value pairs to match.",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "processors": {
+      "type": "array",
+      "description": "Ordered list of processors to apply to matched requests.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "The processor type.",
+            "examples": [
+              "rate_limit",
+              "cache",
+              "retry",
+              "queue",
+              "quota"
+            ]
+          },
+          "config": {
+            "type": "object",
+            "description": "Processor-specific configuration parameters."
+          }
+        }
+      }
+    }
+  }
+}

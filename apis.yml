@@ -24,6 +24,18 @@ apis:
       - url: >-
           https://raw.githubusercontent.com/api-evangelist/lunar-dev/refs/heads/main/openapi/lunar-dev-gateway-admin-openapi.yml
         type: OpenAPI
+      - url: json-schema/health-status.json
+        type: JSONSchema
+      - url: json-schema/discovered-endpoint.json
+        type: JSONSchema
+      - url: json-schema/policy.json
+        type: JSONSchema
+      - url: json-schema/flow.json
+        type: JSONSchema
+      - url: json-schema/validation-result.json
+        type: JSONSchema
+      - url: json-ld/lunar-dev-context.jsonld
+        type: JSONLD
     description: >-
       The Lunar.dev Gateway Admin API provides administrative endpoints for
       managing and monitoring the Lunar API Consumption Gateway. It enables

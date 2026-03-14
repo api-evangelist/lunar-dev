@@ -1,0 +1,52 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "lunar": "https://docs.lunar.dev/",
+    "HealthStatus": {
+      "@id": "lunar:product-features/health-check",
+      "@context": {
+        "status": "https://schema.org/status"
+      }
+    },
+    "DiscoveredEndpoint": {
+      "@id": "lunar:product-features/endpoint-discovery",
+      "@context": {
+        "method": "https://schema.org/httpMethod",
+        "url": "https://schema.org/url",
+        "status_codes": "https://schema.org/measuredValue",
+        "count": "https://schema.org/interactionCount",
+        "average_latency_ms": "https://schema.org/duration"
+      }
+    },
+    "Policy": {
+      "@id": "lunar:product-features/policies",
+      "@context": {
+        "name": "https://schema.org/name",
+        "description": "https://schema.org/description",
+        "enabled": "https://schema.org/status",
+        "endpoint": "https://schema.org/urlTemplate",
+        "method": "https://schema.org/httpMethod",
+        "type": "https://schema.org/category",
+        "config": "https://schema.org/PropertyValue",
+        "consumer_tag": "https://schema.org/identifier"
+      }
+    },
+    "Flow": {
+      "@id": "lunar:product-features/flows",
+      "@context": {
+        "name": "https://schema.org/name",
+        "description": "https://schema.org/description",
+        "enabled": "https://schema.org/status",
+        "filter": "https://schema.org/filter",
+        "processors": "https://schema.org/hasPart"
+      }
+    },
+    "ValidationResult": {
+      "@id": "lunar:product-features/validation",
+      "@context": {
+        "valid": "https://schema.org/status",
+        "errors": "https://schema.org/error"
+      }
+    }
+  }
+}

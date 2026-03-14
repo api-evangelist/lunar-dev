@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/lunar-dev/blob/main/json-schema/validation-result.json",
+  "title": "Lunar.dev Validation Result",
+  "description": "Represents the result of validating a policy or flow configuration against the Lunar Gateway. Indicates whether the configuration is valid and lists any errors found.",
+  "type": "object",
+  "properties": {
+    "valid": {
+      "type": "boolean",
+      "description": "Whether the configuration is valid."
+    },
+    "errors": {
+      "type": "array",
+      "description": "List of validation errors found, if any.",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

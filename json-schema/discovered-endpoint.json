@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/lunar-dev/blob/main/json-schema/discovered-endpoint.json",
+  "title": "Lunar.dev Discovered Endpoint",
+  "description": "Represents an API endpoint discovered by the Lunar Gateway through observed traffic, including request metrics such as count, latency, and status code distributions.",
+  "type": "object",
+  "properties": {
+    "method": {
+      "type": "string",
+      "description": "HTTP method observed for this endpoint.",
+      "examples": [
+        "GET",
+        "POST"
+      ]
+    },
+    "url": {
+      "type": "string",
+      "description": "The URL pattern of the discovered endpoint.",
+      "examples": [
+        "api.example.com/v1/users"
+      ]
+    },
+    "status_codes": {
+      "type": "object",
+      "description": "Distribution of HTTP status codes observed for this endpoint.",
+      "additionalProperties": {
+        "type": "integer"
+      }
+    },
+    "count": {
+      "type": "integer",
+      "description": "Total number of requests observed for this endpoint."
+    },
+    "average_latency_ms": {
+      "type": "number",
+      "description": "Average latency in milliseconds for requests to this endpoint."
+    }
+  }
+}
