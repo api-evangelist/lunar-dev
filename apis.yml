@@ -2,18 +2,43 @@ aid: lunar-dev
 url: >-
   https://raw.githubusercontent.com/api-evangelist/lunar-dev/refs/heads/main/apis.yml
 apis:
-  - aid: lunar-dev:lunar-dev
-    name: Lunar.dev
+  - aid: lunar-dev:gateway-admin
+    name: Lunar.dev Gateway Admin API
     tags:
       - Integrations
       - Platform
       - Visibility
       - Control
       - Performance
-      - Version Control
-      - Automation
-      - Deployment
-      - Workflows
+      - Consumption Gateway
+      - AI Gateway
+      - MCP Gateway
+      - Health
+      - Discovery
+      - Policies
+      - Flows
+    humanURL: https://docs.lunar.dev/
+    properties:
+      - url: https://docs.lunar.dev/
+        type: Documentation
+      - url: >-
+          https://raw.githubusercontent.com/api-evangelist/lunar-dev/refs/heads/main/openapi/lunar-dev-gateway-admin-openapi.yml
+        type: OpenAPI
+    description: >-
+      The Lunar.dev Gateway Admin API provides administrative endpoints for
+      managing and monitoring the Lunar API Consumption Gateway. It enables
+      health monitoring, endpoint discovery, flow validation, and policy
+      management for the running gateway instance.
+  - aid: lunar-dev:gateway-proxy
+    name: Lunar.dev Gateway Proxy API
+    tags:
+      - Integrations
+      - Platform
+      - Proxy
+      - Egress
+      - Traffic Management
+      - Rate Limiting
+      - Quota Management
       - Consumption Gateway
       - AI Gateway
       - MCP Gateway
@@ -21,10 +46,15 @@ apis:
     properties:
       - url: https://docs.lunar.dev/
         type: Documentation
+      - url: >-
+          https://raw.githubusercontent.com/api-evangelist/lunar-dev/refs/heads/main/openapi/lunar-dev-gateway-proxy-openapi.yml
+        type: OpenAPI
     description: >-
-      Lunar.dev is built to enhance and scale integrations, delivering
-      unparalleled visibility, control, and performance for your 3rd-party API
-      usage. Empower your ...
+      The Lunar.dev Gateway Proxy API handles routing of outbound egress API
+      traffic through the Lunar Gateway. Client applications send third-party
+      API requests through this proxy, which provides traffic management,
+      policy enforcement, caching, rate limiting, quota management, and
+      real-time observability.
 name: Lunar.dev
 tags:
   - Integrations
@@ -164,7 +194,7 @@ common:
       - name: Policy Enforcement
       - name: Visibility and Alerts
 created: '2025-01-08'
-modified: '2025-06-10'
+modified: '2026-03-14'
 position: Consumer
 description: >-
   Lunar.dev is a web-based platform that offers a range of tools and services to

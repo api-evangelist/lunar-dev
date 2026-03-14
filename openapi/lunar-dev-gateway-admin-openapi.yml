@@ -1,0 +1,241 @@
+openapi: 3.1.0
+info:
+  title: Lunar.dev Gateway Admin API
+  description: >-
+    The Lunar.dev Gateway Admin API provides administrative endpoints for
+    managing and monitoring the Lunar API Consumption Gateway. The gateway acts
+    as an egress proxy for third-party API traffic, providing visibility,
+    control, and performance optimization. The admin API enables health
+    monitoring, endpoint discovery, flow validation, and policy management for
+    the running gateway instance.
+  version: 1.0.0
+  contact:
+    name: Lunar.dev
+    url: https://www.lunar.dev/
+  license:
+    name: MIT
+    url: https://github.com/TheLunarCompany/lunar/blob/main/LICENSE
+externalDocs:
+  description: Lunar.dev Documentation
+  url: https://docs.lunar.dev/
+servers:
+  - url: http://localhost:8040
+    description: Gateway Admin Health Server
+  - url: http://localhost:8081
+    description: Gateway Admin Engine Server
+paths:
+  /healthcheck:
+    get:
+      operationId: getHealthcheck
+      summary: Check gateway health
+      description: >-
+        Returns the health status of the Lunar Gateway. A 200 response
+        indicates that the gateway is running and healthy.
+      tags:
+        - Health
+      responses:
+        '200':
+          description: Gateway is healthy and running.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthStatus'
+        '503':
+          description: Gateway is unhealthy or not ready.
+  /discover:
+    get:
+      operationId: getDiscover
+      summary: Discover API endpoints
+      description: >-
+        Returns a list of discovered API endpoints that have been observed
+        passing through the Lunar Gateway. This includes endpoint metrics
+        such as latency and status code distributions grouped by endpoint.
+        Even when no policies are defined, the gateway generates discovered
+        endpoint metrics automatically.
+      tags:
+        - Discovery
+      responses:
+        '200':
+          description: Successfully retrieved discovered endpoints.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiscoveredEndpoints'
+  /apply_policies:
+    post:
+      operationId: applyPolicies
+      summary: Apply policies
+      description: >-
+        Applies the current policies configuration (policies.yaml) to the
+        running Lunar Gateway instance. This reloads the policy definitions
+        and activates any changes made to the policies file without
+        requiring a gateway restart.
+      tags:
+        - Policies
+      responses:
+        '200':
+          description: Policies applied successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResult'
+        '400':
+          description: Invalid policy configuration.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /validate_policies:
+    post:
+      operationId: validatePolicies
+      summary: Validate policies
+      description: >-
+        Validates the current policies configuration (policies.yaml) without
+        applying it. Checks for configuration issues, syntax errors, and
+        logical conflicts in the policy definitions.
+      tags:
+        - Policies
+      responses:
+        '200':
+          description: Policies are valid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationResult'
+        '400':
+          description: Policies contain validation errors.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationResult'
+  /validate_flows:
+    post:
+      operationId: validateFlows
+      summary: Validate flows
+      description: >-
+        Validates the current flow configuration files for syntax and
+        logical errors before deploying. Flows are YAML-based configurations
+        that define how API requests and responses are processed in real
+        time through the Lunar Gateway.
+      tags:
+        - Flows
+      responses:
+        '200':
+          description: Flows are valid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationResult'
+        '400':
+          description: Flows contain validation errors.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationResult'
+  /apply_flows:
+    post:
+      operationId: applyFlows
+      summary: Apply flows
+      description: >-
+        Applies the current flow configuration files to the running Lunar
+        Gateway instance. Flows define traffic management rules including
+        rate limiting, caching, retry mechanisms, quota enforcement, and
+        request prioritization.
+      tags:
+        - Flows
+      responses:
+        '200':
+          description: Flows applied successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResult'
+        '400':
+          description: Invalid flow configuration.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+          description: The health status of the gateway.
+          examples:
+            - healthy
+    DiscoveredEndpoints:
+      type: object
+      properties:
+        endpoints:
+          type: array
+          description: List of discovered API endpoints.
+          items:
+            $ref: '#/components/schemas/DiscoveredEndpoint'
+    DiscoveredEndpoint:
+      type: object
+      properties:
+        method:
+          type: string
+          description: HTTP method observed for this endpoint.
+          examples:
+            - GET
+            - POST
+        url:
+          type: string
+          description: The URL pattern of the discovered endpoint.
+          examples:
+            - api.example.com/v1/users
+        status_codes:
+          type: object
+          description: Distribution of HTTP status codes observed.
+          additionalProperties:
+            type: integer
+        count:
+          type: integer
+          description: Total number of requests observed for this endpoint.
+        average_latency_ms:
+          type: number
+          description: Average latency in milliseconds for requests to this endpoint.
+    OperationResult:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Result status of the operation.
+          examples:
+            - ok
+        message:
+          type: string
+          description: Human-readable message about the operation result.
+    ValidationResult:
+      type: object
+      properties:
+        valid:
+          type: boolean
+          description: Whether the configuration is valid.
+        errors:
+          type: array
+          description: List of validation errors found, if any.
+          items:
+            type: string
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message describing what went wrong.
+        details:
+          type: string
+          description: Additional details about the error.
+tags:
+  - name: Health
+    description: Gateway health monitoring endpoints.
+  - name: Discovery
+    description: API endpoint discovery and metrics.
+  - name: Policies
+    description: Policy management for the Lunar Gateway.
+  - name: Flows
+    description: Flow configuration management for traffic control.

@@ -1,0 +1,205 @@
+openapi: 3.1.0
+info:
+  title: Lunar.dev Gateway Proxy API
+  description: >-
+    The Lunar.dev Gateway Proxy API handles the routing of outbound (egress)
+    API traffic through the Lunar Gateway. Client applications send their
+    third-party API requests through this proxy, which provides traffic
+    management, policy enforcement, caching, rate limiting, quota management,
+    and real-time observability. Requests are routed by specifying the target
+    host via the x-lunar-host header, and the gateway forwards the request
+    while applying configured flows and policies.
+  version: 1.0.0
+  contact:
+    name: Lunar.dev
+    url: https://www.lunar.dev/
+  license:
+    name: MIT
+    url: https://github.com/TheLunarCompany/lunar/blob/main/LICENSE
+externalDocs:
+  description: Lunar.dev Documentation
+  url: https://docs.lunar.dev/
+servers:
+  - url: http://localhost:8000
+    description: Lunar Gateway Proxy Server
+paths:
+  /{path}:
+    get:
+      operationId: proxyGet
+      summary: Proxy GET request
+      description: >-
+        Forwards a GET request to the target API host specified in the
+        x-lunar-host header. The Lunar Gateway applies any configured flows
+        and policies before forwarding the request and returns the response
+        from the upstream API.
+      tags:
+        - Proxy
+      parameters:
+        - $ref: '#/components/parameters/Path'
+        - $ref: '#/components/parameters/LunarHost'
+        - $ref: '#/components/parameters/LunarConsumerTag'
+      responses:
+        '200':
+          description: Proxied response from the upstream API.
+        '502':
+          description: Bad gateway - upstream API is unreachable.
+        '503':
+          description: Service unavailable - rate limited or quota exceeded.
+    post:
+      operationId: proxyPost
+      summary: Proxy POST request
+      description: >-
+        Forwards a POST request to the target API host specified in the
+        x-lunar-host header. The Lunar Gateway applies any configured flows
+        and policies before forwarding the request.
+      tags:
+        - Proxy
+      parameters:
+        - $ref: '#/components/parameters/Path'
+        - $ref: '#/components/parameters/LunarHost'
+        - $ref: '#/components/parameters/LunarConsumerTag'
+      requestBody:
+        description: Request body to forward to the upstream API.
+        content:
+          application/json:
+            schema:
+              type: object
+          '*/*':
+            schema:
+              type: string
+              format: binary
+      responses:
+        '200':
+          description: Proxied response from the upstream API.
+        '502':
+          description: Bad gateway - upstream API is unreachable.
+        '503':
+          description: Service unavailable - rate limited or quota exceeded.
+    put:
+      operationId: proxyPut
+      summary: Proxy PUT request
+      description: >-
+        Forwards a PUT request to the target API host specified in the
+        x-lunar-host header. The Lunar Gateway applies any configured flows
+        and policies before forwarding the request.
+      tags:
+        - Proxy
+      parameters:
+        - $ref: '#/components/parameters/Path'
+        - $ref: '#/components/parameters/LunarHost'
+        - $ref: '#/components/parameters/LunarConsumerTag'
+      requestBody:
+        description: Request body to forward to the upstream API.
+        content:
+          application/json:
+            schema:
+              type: object
+          '*/*':
+            schema:
+              type: string
+              format: binary
+      responses:
+        '200':
+          description: Proxied response from the upstream API.
+        '502':
+          description: Bad gateway - upstream API is unreachable.
+        '503':
+          description: Service unavailable - rate limited or quota exceeded.
+    delete:
+      operationId: proxyDelete
+      summary: Proxy DELETE request
+      description: >-
+        Forwards a DELETE request to the target API host specified in the
+        x-lunar-host header. The Lunar Gateway applies any configured flows
+        and policies before forwarding the request.
+      tags:
+        - Proxy
+      parameters:
+        - $ref: '#/components/parameters/Path'
+        - $ref: '#/components/parameters/LunarHost'
+        - $ref: '#/components/parameters/LunarConsumerTag'
+      responses:
+        '200':
+          description: Proxied response from the upstream API.
+        '502':
+          description: Bad gateway - upstream API is unreachable.
+        '503':
+          description: Service unavailable - rate limited or quota exceeded.
+    patch:
+      operationId: proxyPatch
+      summary: Proxy PATCH request
+      description: >-
+        Forwards a PATCH request to the target API host specified in the
+        x-lunar-host header. The Lunar Gateway applies any configured flows
+        and policies before forwarding the request.
+      tags:
+        - Proxy
+      parameters:
+        - $ref: '#/components/parameters/Path'
+        - $ref: '#/components/parameters/LunarHost'
+        - $ref: '#/components/parameters/LunarConsumerTag'
+      requestBody:
+        description: Request body to forward to the upstream API.
+        content:
+          application/json:
+            schema:
+              type: object
+          '*/*':
+            schema:
+              type: string
+              format: binary
+      responses:
+        '200':
+          description: Proxied response from the upstream API.
+        '502':
+          description: Bad gateway - upstream API is unreachable.
+        '503':
+          description: Service unavailable - rate limited or quota exceeded.
+components:
+  parameters:
+    Path:
+      name: path
+      in: path
+      required: true
+      description: >-
+        The original request path to forward to the upstream API. This is
+        the path that would normally be sent directly to the third-party API.
+      schema:
+        type: string
+    LunarHost:
+      name: x-lunar-host
+      in: header
+      required: true
+      description: >-
+        The target host to forward the request to. This specifies which
+        third-party API the request should be routed to through the Lunar
+        Gateway.
+      schema:
+        type: string
+      examples:
+        catfact:
+          value: catfact.ninja
+          summary: Cat Facts API
+        generic:
+          value: api.example.com
+          summary: Generic API host
+    LunarConsumerTag:
+      name: x-lunar-consumer-tag
+      in: header
+      required: false
+      description: >-
+        An optional tag identifying the consuming application or service.
+        Used for tracking and applying consumer-specific policies and
+        quota allocations.
+      schema:
+        type: string
+      examples:
+        backend:
+          value: backend-service
+          summary: Backend service consumer tag
+tags:
+  - name: Proxy
+    description: >-
+      Proxy endpoints for routing third-party API traffic through the
+      Lunar Gateway with policy enforcement, traffic controls, and
+      observability.
