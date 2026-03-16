@@ -206,7 +206,7 @@ common:
       - name: Policy Enforcement
       - name: Visibility and Alerts
 created: '2025-01-08'
-modified: '2026-03-14'
+modified: '2026-03-16'
 position: Consumer
 description: >-
   Lunar.dev is a web-based platform that offers a range of tools and services to
@@ -219,5 +219,5 @@ description: >-
   looking to optimize their development process and achieve their coding goals.
 maintainers:
   - FN: Kin Lane
-    email: info@apievangelist.com
+    email: kin@apievangelist.com
 specificationVersion: '0.19'
