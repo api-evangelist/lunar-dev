@@ -209,14 +209,11 @@ created: '2025-01-08'
 modified: '2026-03-16'
 position: Consumer
 description: >-
-  Lunar.dev is a web-based platform that offers a range of tools and services to
-  help developers and teams streamline their workflow and collaborate more
-  effectively. From project management and version control, to code review and
-  deployment automation, Lunar.dev provides a comprehensive suite of features
-  that can help software development teams work more efficiently and deliver
-  high-quality code more quickly. With its intuitive interface and integration
-  with popular development tools, Lunar.dev is an invaluable resource for teams
-  looking to optimize their development process and achieve their coding goals.
+  Lunar.dev is a web-based platform that offers a range of tools and services to help
+  developers and teams streamline their workflow and collaborate more effectively.
+  From project management and version control, to code review and deployment automation,
+  Lunar.dev provides a comprehensive suite of features that can help software development
+  teams work more efficiently and deliver high-quality code more quickly.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

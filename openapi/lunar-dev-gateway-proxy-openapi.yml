@@ -26,7 +26,7 @@ paths:
   /{path}:
     get:
       operationId: proxyGet
-      summary: Proxy GET request
+      summary: Lunar.dev Proxy GET request
       description: >-
         Forwards a GET request to the target API host specified in the
         x-lunar-host header. The Lunar Gateway applies any configured flows
@@ -47,7 +47,7 @@ paths:
           description: Service unavailable - rate limited or quota exceeded.
     post:
       operationId: proxyPost
-      summary: Proxy POST request
+      summary: Lunar.dev Proxy POST request
       description: >-
         Forwards a POST request to the target API host specified in the
         x-lunar-host header. The Lunar Gateway applies any configured flows
@@ -77,7 +77,7 @@ paths:
           description: Service unavailable - rate limited or quota exceeded.
     put:
       operationId: proxyPut
-      summary: Proxy PUT request
+      summary: Lunar.dev Proxy PUT request
       description: >-
         Forwards a PUT request to the target API host specified in the
         x-lunar-host header. The Lunar Gateway applies any configured flows
@@ -107,7 +107,7 @@ paths:
           description: Service unavailable - rate limited or quota exceeded.
     delete:
       operationId: proxyDelete
-      summary: Proxy DELETE request
+      summary: Lunar.dev Proxy DELETE request
       description: >-
         Forwards a DELETE request to the target API host specified in the
         x-lunar-host header. The Lunar Gateway applies any configured flows
@@ -127,7 +127,7 @@ paths:
           description: Service unavailable - rate limited or quota exceeded.
     patch:
       operationId: proxyPatch
-      summary: Proxy PATCH request
+      summary: Lunar.dev Proxy PATCH request
       description: >-
         Forwards a PATCH request to the target API host specified in the
         x-lunar-host header. The Lunar Gateway applies any configured flows

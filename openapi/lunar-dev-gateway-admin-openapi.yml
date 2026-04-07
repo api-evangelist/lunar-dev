@@ -27,7 +27,7 @@ paths:
   /healthcheck:
     get:
       operationId: getHealthcheck
-      summary: Check gateway health
+      summary: Lunar.dev Check gateway health
       description: >-
         Returns the health status of the Lunar Gateway. A 200 response
         indicates that the gateway is running and healthy.
@@ -45,7 +45,7 @@ paths:
   /discover:
     get:
       operationId: getDiscover
-      summary: Discover API endpoints
+      summary: Lunar.dev Discover API endpoints
       description: >-
         Returns a list of discovered API endpoints that have been observed
         passing through the Lunar Gateway. This includes endpoint metrics
@@ -64,7 +64,7 @@ paths:
   /apply_policies:
     post:
       operationId: applyPolicies
-      summary: Apply policies
+      summary: Lunar.dev Apply policies
       description: >-
         Applies the current policies configuration (policies.yaml) to the
         running Lunar Gateway instance. This reloads the policy definitions
@@ -88,7 +88,7 @@ paths:
   /validate_policies:
     post:
       operationId: validatePolicies
-      summary: Validate policies
+      summary: Lunar.dev Validate policies
       description: >-
         Validates the current policies configuration (policies.yaml) without
         applying it. Checks for configuration issues, syntax errors, and
@@ -111,7 +111,7 @@ paths:
   /validate_flows:
     post:
       operationId: validateFlows
-      summary: Validate flows
+      summary: Lunar.dev Validate flows
       description: >-
         Validates the current flow configuration files for syntax and
         logical errors before deploying. Flows are YAML-based configurations
@@ -135,7 +135,7 @@ paths:
   /apply_flows:
     post:
       operationId: applyFlows
-      summary: Apply flows
+      summary: Lunar.dev Apply flows
       description: >-
         Applies the current flow configuration files to the running Lunar
         Gateway instance. Flows define traffic management rules including
