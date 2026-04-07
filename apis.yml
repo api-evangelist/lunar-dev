@@ -5,18 +5,18 @@ apis:
   - aid: lunar-dev:gateway-admin
     name: Lunar.dev Gateway Admin API
     tags:
-      - Integrations
-      - Platform
-      - Visibility
-      - Control
-      - Performance
-      - Consumption Gateway
       - AI Gateway
-      - MCP Gateway
-      - Health
+      - Consumption Gateway
+      - Control
       - Discovery
-      - Policies
       - Flows
+      - Health
+      - Integrations
+      - MCP Gateway
+      - Performance
+      - Platform
+      - Policies
+      - Visibility
     humanURL: https://docs.lunar.dev/
     properties:
       - url: https://docs.lunar.dev/
@@ -44,16 +44,16 @@ apis:
   - aid: lunar-dev:gateway-proxy
     name: Lunar.dev Gateway Proxy API
     tags:
+      - AI Gateway
+      - Consumption Gateway
+      - Egress
       - Integrations
+      - MCP Gateway
       - Platform
       - Proxy
-      - Egress
-      - Traffic Management
-      - Rate Limiting
       - Quota Management
-      - Consumption Gateway
-      - AI Gateway
-      - MCP Gateway
+      - Rate Limiting
+      - Traffic Management
     humanURL: https://docs.lunar.dev/
     properties:
       - url: https://docs.lunar.dev/
@@ -69,18 +69,18 @@ apis:
       real-time observability.
 name: Lunar.dev
 tags:
-  - Integrations
-  - Platform
-  - Visibility
-  - Control
-  - Performance
-  - Version Control
-  - Automation
-  - Deployment
-  - Workflows
-  - Consumption Gateway
   - AI Gateway
+  - Automation
+  - Consumption Gateway
+  - Control
+  - Deployment
+  - Integrations
   - MCP Gateway
+  - Performance
+  - Platform
+  - Version Control
+  - Visibility
+  - Workflows
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party

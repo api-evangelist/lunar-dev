@@ -231,11 +231,11 @@ components:
           type: string
           description: Additional details about the error.
 tags:
-  - name: Health
-    description: Gateway health monitoring endpoints.
   - name: Discovery
     description: API endpoint discovery and metrics.
-  - name: Policies
-    description: Policy management for the Lunar Gateway.
   - name: Flows
     description: Flow configuration management for traffic control.
+  - name: Health
+    description: Gateway health monitoring endpoints.
+  - name: Policies
+    description: Policy management for the Lunar Gateway.
