@@ -206,14 +206,15 @@ common:
       - name: Policy Enforcement
       - name: Visibility and Alerts
 created: '2025-01-08'
-modified: '2026-03-16'
+modified: '2026-04-28'
 position: Consumer
 description: >-
-  Lunar.dev is a web-based platform that offers a range of tools and services to help
-  developers and teams streamline their workflow and collaborate more effectively.
-  From project management and version control, to code review and deployment automation,
-  Lunar.dev provides a comprehensive suite of features that can help software development
-  teams work more efficiently and deliver high-quality code more quickly.
+  Lunar.dev is an enterprise-grade gateway platform for AI governance and
+  third-party API consumption control. It unifies an MCP Gateway, AI Gateway,
+  and API Consumption Gateway into a single control point that gives
+  organizations observability, access control, policy enforcement, quota
+  management, rate limiting, and real-time monitoring over how applications
+  and AI agents authenticate, discover tools, and consume third-party APIs.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
