@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Lunar.dev Gateway Admin API — Discovery
+  description: 'Lunar.dev Gateway Admin API — Discovery. 1 operations. Lead operation: Lunar.dev Discover API endpoints. Self-contained
+    Naftiko capability covering one Lunar Dev business surface.'
+  tags:
+  - Lunar Dev
+  - Discovery
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    LUNAR_DEV_API_KEY: LUNAR_DEV_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: gateway-admin-discovery
+    baseUri: http://localhost:8040
+    description: Lunar.dev Gateway Admin API — Discovery business capability. Self-contained, no shared references.
+    resources:
+    - name: discover
+      path: /discover
+      operations:
+      - name: getdiscover
+        method: GET
+        description: Lunar.dev Discover API endpoints
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: gateway-admin-discovery-rest
+    port: 8080
+    description: REST adapter for Lunar.dev Gateway Admin API — Discovery. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/discover
+      name: discover
+      description: REST surface for discover.
+      operations:
+      - method: GET
+        name: getdiscover
+        description: Lunar.dev Discover API endpoints
+        call: gateway-admin-discovery.getdiscover
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: gateway-admin-discovery-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Lunar.dev Gateway Admin API — Discovery. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: lunar-dev-discover-api-endpoints
+      description: Lunar.dev Discover API endpoints
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: gateway-admin-discovery.getdiscover
+      outputParameters:
+      - type: object
+        mapping: $.

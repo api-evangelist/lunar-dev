@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Lunar.dev Gateway Admin API — Health
+  description: 'Lunar.dev Gateway Admin API — Health. 1 operations. Lead operation: Lunar.dev Check gateway health. Self-contained
+    Naftiko capability covering one Lunar Dev business surface.'
+  tags:
+  - Lunar Dev
+  - Health
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    LUNAR_DEV_API_KEY: LUNAR_DEV_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: gateway-admin-health
+    baseUri: http://localhost:8040
+    description: Lunar.dev Gateway Admin API — Health business capability. Self-contained, no shared references.
+    resources:
+    - name: healthcheck
+      path: /healthcheck
+      operations:
+      - name: gethealthcheck
+        method: GET
+        description: Lunar.dev Check gateway health
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: gateway-admin-health-rest
+    port: 8080
+    description: REST adapter for Lunar.dev Gateway Admin API — Health. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/healthcheck
+      name: healthcheck
+      description: REST surface for healthcheck.
+      operations:
+      - method: GET
+        name: gethealthcheck
+        description: Lunar.dev Check gateway health
+        call: gateway-admin-health.gethealthcheck
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: gateway-admin-health-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Lunar.dev Gateway Admin API — Health. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: lunar-dev-check-gateway-health
+      description: Lunar.dev Check gateway health
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: gateway-admin-health.gethealthcheck
+      outputParameters:
+      - type: object
+        mapping: $.

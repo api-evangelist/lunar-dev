@@ -1,0 +1,197 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Lunar.dev Gateway Proxy API — Proxy
+  description: 'Lunar.dev Gateway Proxy API — Proxy. 5 operations. Lead operation: Lunar.dev Proxy GET request. Self-contained
+    Naftiko capability covering one Lunar Dev business surface.'
+  tags:
+  - Lunar Dev
+  - Proxy
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    LUNAR_DEV_API_KEY: LUNAR_DEV_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: gateway-proxy-proxy
+    baseUri: http://localhost:8000
+    description: Lunar.dev Gateway Proxy API — Proxy business capability. Self-contained, no shared references.
+    resources:
+    - name: path
+      path: /{path}
+      operations:
+      - name: proxyget
+        method: GET
+        description: Lunar.dev Proxy GET request
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: proxypost
+        method: POST
+        description: Lunar.dev Proxy POST request
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: proxyput
+        method: PUT
+        description: Lunar.dev Proxy PUT request
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: proxydelete
+        method: DELETE
+        description: Lunar.dev Proxy DELETE request
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: proxypatch
+        method: PATCH
+        description: Lunar.dev Proxy PATCH request
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+  exposes:
+  - type: rest
+    namespace: gateway-proxy-proxy-rest
+    port: 8080
+    description: REST adapter for Lunar.dev Gateway Proxy API — Proxy. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/{path}
+      name: path
+      description: REST surface for path.
+      operations:
+      - method: GET
+        name: proxyget
+        description: Lunar.dev Proxy GET request
+        call: gateway-proxy-proxy.proxyget
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: proxypost
+        description: Lunar.dev Proxy POST request
+        call: gateway-proxy-proxy.proxypost
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: proxyput
+        description: Lunar.dev Proxy PUT request
+        call: gateway-proxy-proxy.proxyput
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: proxydelete
+        description: Lunar.dev Proxy DELETE request
+        call: gateway-proxy-proxy.proxydelete
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: proxypatch
+        description: Lunar.dev Proxy PATCH request
+        call: gateway-proxy-proxy.proxypatch
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: gateway-proxy-proxy-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Lunar.dev Gateway Proxy API — Proxy. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: lunar-dev-proxy-get-request
+      description: Lunar.dev Proxy GET request
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: gateway-proxy-proxy.proxyget
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lunar-dev-proxy-post-request
+      description: Lunar.dev Proxy POST request
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: gateway-proxy-proxy.proxypost
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lunar-dev-proxy-put-request
+      description: Lunar.dev Proxy PUT request
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: gateway-proxy-proxy.proxyput
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lunar-dev-proxy-delete-request
+      description: Lunar.dev Proxy DELETE request
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: gateway-proxy-proxy.proxydelete
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lunar-dev-proxy-patch-request
+      description: Lunar.dev Proxy PATCH request
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: gateway-proxy-proxy.proxypatch
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
