@@ -1,0 +1,654 @@
+{
+  "item": [
+    {
+      "id": "d3687d6c-704a-435b-8837-75db56832379",
+      "name": "Discovery",
+      "description": {
+        "content": "API endpoint discovery and metrics.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b6721d86-8512-4ba8-9c43-01c29797a651",
+          "name": "Lunar.dev Discover API endpoints",
+          "request": {
+            "name": "Lunar.dev Discover API endpoints",
+            "description": {
+              "content": "Returns a list of discovered API endpoints that have been observed passing through the Lunar Gateway. This includes endpoint metrics such as latency and status code distributions grouped by endpoint. Even when no policies are defined, the gateway generates discovered endpoint metrics automatically.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "discover"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1d2eaaf5-666d-451d-9fff-531e5b9d3193",
+              "name": "Successfully retrieved discovered endpoints.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discover"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"endpoints\": [\n    {\n      \"method\": \"GET\",\n      \"url\": \"api.example.com/v1/users\",\n      \"status_codes\": {\n        \"key_0\": 1506\n      },\n      \"count\": 4316,\n      \"average_latency_ms\": 7180.553223830199\n    },\n    {\n      \"method\": \"GET\",\n      \"url\": \"api.example.com/v1/users\",\n      \"status_codes\": {\n        \"key_0\": 2598\n      },\n      \"count\": 4664,\n      \"average_latency_ms\": 7422.361097618353\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "50c79d7c-9a6f-42f2-a6a4-042599dbaab3",
+      "name": "Flows",
+      "description": {
+        "content": "Flow configuration management for traffic control.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2e3af52a-579d-4924-bab4-800293e676c0",
+          "name": "Lunar.dev Validate flows",
+          "request": {
+            "name": "Lunar.dev Validate flows",
+            "description": {
+              "content": "Validates the current flow configuration files for syntax and logical errors before deploying. Flows are YAML-based configurations that define how API requests and responses are processed in real time through the Lunar Gateway.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "validate_flows"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b889120c-bb66-4d8d-9d40-35e1e80ee179",
+              "name": "Flows are valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "validate_flows"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"valid\": false,\n  \"errors\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a2d1c696-4875-4f51-8725-add9b0ce06db",
+              "name": "Flows contain validation errors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "validate_flows"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"valid\": false,\n  \"errors\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7a185dcf-fe9c-42f9-8f40-c6e9ac0c1789",
+          "name": "Lunar.dev Apply flows",
+          "request": {
+            "name": "Lunar.dev Apply flows",
+            "description": {
+              "content": "Applies the current flow configuration files to the running Lunar Gateway instance. Flows define traffic management rules including rate limiting, caching, retry mechanisms, quota enforcement, and request prioritization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "apply_flows"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "575f49d7-618b-4780-8138-d6aad0201cd2",
+              "name": "Flows applied successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apply_flows"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6ebe969c-36f1-4c90-9400-50439581aa19",
+              "name": "Invalid flow configuration.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apply_flows"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"details\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "f31cb559-c95d-44b0-a672-a211db0c86b4",
+      "name": "Health",
+      "description": {
+        "content": "Gateway health monitoring endpoints.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1cd40f13-f75b-48d5-818c-f4c353b582b4",
+          "name": "Lunar.dev Check gateway health",
+          "request": {
+            "name": "Lunar.dev Check gateway health",
+            "description": {
+              "content": "Returns the health status of the Lunar Gateway. A 200 response indicates that the gateway is running and healthy.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "healthcheck"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "49b00ab0-5ead-4a65-b45d-54f44869ff78",
+              "name": "Gateway is healthy and running.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "healthcheck"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"healthy\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cba64f0e-9f54-4f8d-8a8f-daf27a4429e3",
+              "name": "Gateway is unhealthy or not ready.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "healthcheck"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "2f62521d-a539-4d96-8885-c503b301624f",
+      "name": "Policies",
+      "description": {
+        "content": "Policy management for the Lunar Gateway.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c43de65e-dff4-4fdf-9bf0-b47452085356",
+          "name": "Lunar.dev Apply policies",
+          "request": {
+            "name": "Lunar.dev Apply policies",
+            "description": {
+              "content": "Applies the current policies configuration (policies.yaml) to the running Lunar Gateway instance. This reloads the policy definitions and activates any changes made to the policies file without requiring a gateway restart.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "apply_policies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9fefffdf-01a7-4a10-a746-85513227018a",
+              "name": "Policies applied successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apply_policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "34b3b4b4-0d39-48d6-813b-a52b5d42bf3c",
+              "name": "Invalid policy configuration.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apply_policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"details\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3faaa547-e134-4a47-81bb-62f41b01025f",
+          "name": "Lunar.dev Validate policies",
+          "request": {
+            "name": "Lunar.dev Validate policies",
+            "description": {
+              "content": "Validates the current policies configuration (policies.yaml) without applying it. Checks for configuration issues, syntax errors, and logical conflicts in the policy definitions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "validate_policies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "be797aa5-65cf-4a9a-8db2-66acb480e1db",
+              "name": "Policies are valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "validate_policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"valid\": false,\n  \"errors\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "796c4bf8-e8ac-4ad9-ba49-448e752fe49f",
+              "name": "Policies contain validation errors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "validate_policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"valid\": false,\n  \"errors\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8040",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "548d6a0a-d88a-4dd0-a0ee-a70ef54c3f06",
+    "name": "Lunar.dev Gateway Admin API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Lunar.dev Gateway Admin API provides administrative endpoints for managing and monitoring the Lunar API Consumption Gateway. The gateway acts as an egress proxy for third-party API traffic, providing visibility, control, and performance optimization. The admin API enables health monitoring, endpoint discovery, flow validation, and policy management for the running gateway instance.\n\nContact Support:\n Name: Lunar.dev",
+      "type": "text/plain"
+    }
+  }
+}

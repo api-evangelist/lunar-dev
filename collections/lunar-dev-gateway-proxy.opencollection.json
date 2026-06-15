@@ -1,0 +1,175 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lunar.dev Gateway Proxy API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Proxy",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lunar.dev Proxy GET request",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8000/:path",
+            "headers": [
+              {
+                "name": "x-lunar-host",
+                "value": ""
+              },
+              {
+                "name": "x-lunar-consumer-tag",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path",
+                "description": "The original request path to forward to the upstream API. This is the path that would normally be sent directly to the third-party API."
+              }
+            ]
+          },
+          "docs": "Forwards a GET request to the target API host specified in the x-lunar-host header. The Lunar Gateway applies any configured flows and policies before forwarding the request and returns the response from the upstream API."
+        },
+        {
+          "info": {
+            "name": "Lunar.dev Proxy POST request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8000/:path",
+            "headers": [
+              {
+                "name": "x-lunar-host",
+                "value": ""
+              },
+              {
+                "name": "x-lunar-consumer-tag",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path",
+                "description": "The original request path to forward to the upstream API. This is the path that would normally be sent directly to the third-party API."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Forwards a POST request to the target API host specified in the x-lunar-host header. The Lunar Gateway applies any configured flows and policies before forwarding the request."
+        },
+        {
+          "info": {
+            "name": "Lunar.dev Proxy PUT request",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8000/:path",
+            "headers": [
+              {
+                "name": "x-lunar-host",
+                "value": ""
+              },
+              {
+                "name": "x-lunar-consumer-tag",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path",
+                "description": "The original request path to forward to the upstream API. This is the path that would normally be sent directly to the third-party API."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Forwards a PUT request to the target API host specified in the x-lunar-host header. The Lunar Gateway applies any configured flows and policies before forwarding the request."
+        },
+        {
+          "info": {
+            "name": "Lunar.dev Proxy PATCH request",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:8000/:path",
+            "headers": [
+              {
+                "name": "x-lunar-host",
+                "value": ""
+              },
+              {
+                "name": "x-lunar-consumer-tag",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path",
+                "description": "The original request path to forward to the upstream API. This is the path that would normally be sent directly to the third-party API."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Forwards a PATCH request to the target API host specified in the x-lunar-host header. The Lunar Gateway applies any configured flows and policies before forwarding the request."
+        },
+        {
+          "info": {
+            "name": "Lunar.dev Proxy DELETE request",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8000/:path",
+            "headers": [
+              {
+                "name": "x-lunar-host",
+                "value": ""
+              },
+              {
+                "name": "x-lunar-consumer-tag",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "path",
+                "value": "",
+                "type": "path",
+                "description": "The original request path to forward to the upstream API. This is the path that would normally be sent directly to the third-party API."
+              }
+            ]
+          },
+          "docs": "Forwards a DELETE request to the target API host specified in the x-lunar-host header. The Lunar Gateway applies any configured flows and policies before forwarding the request."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

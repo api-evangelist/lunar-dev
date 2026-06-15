@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lunar.dev Gateway Admin API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lunar.dev Check gateway health",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8040/healthcheck"
+          },
+          "docs": "Returns the health status of the Lunar Gateway. A 200 response indicates that the gateway is running and healthy."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Discovery",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lunar.dev Discover API endpoints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8040/discover"
+          },
+          "docs": "Returns a list of discovered API endpoints that have been observed passing through the Lunar Gateway. This includes endpoint metrics such as latency and status code distributions grouped by endpoint. Even when no policies are defined, the gateway generates discovered endpoint metrics automatically."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Policies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lunar.dev Apply policies",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8040/apply_policies"
+          },
+          "docs": "Applies the current policies configuration (policies.yaml) to the running Lunar Gateway instance. This reloads the policy definitions and activates any changes made to the policies file without requiring a gateway restart."
+        },
+        {
+          "info": {
+            "name": "Lunar.dev Validate policies",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8040/validate_policies"
+          },
+          "docs": "Validates the current policies configuration (policies.yaml) without applying it. Checks for configuration issues, syntax errors, and logical conflicts in the policy definitions."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Flows",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lunar.dev Validate flows",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8040/validate_flows"
+          },
+          "docs": "Validates the current flow configuration files for syntax and logical errors before deploying. Flows are YAML-based configurations that define how API requests and responses are processed in real time through the Lunar Gateway."
+        },
+        {
+          "info": {
+            "name": "Lunar.dev Apply flows",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8040/apply_flows"
+          },
+          "docs": "Applies the current flow configuration files to the running Lunar Gateway instance. Flows define traffic management rules including rate limiting, caching, retry mechanisms, quota enforcement, and request prioritization."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
