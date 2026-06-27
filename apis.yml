@@ -85,7 +85,7 @@ common:
     url: https://www.linkedin.com/company/lunar-api
   - url: https://www.youtube.com/channel/UCgWge-0djZcm-JWU82FbR7A
     name: Youtube
-    type: Youtube
+    type: YouTube
   - url: https://github.com/TheLunarCompany
     name: GitHub Organization
     type: GitHubOrganization
@@ -127,7 +127,7 @@ common:
     description: 'null'
   - url: https://docs.lunar.dev/quotas/quotas-overview
     name: Quotas Overview | Lunar Docs
-    type: Quotas
+    type: RateLimits
     description: 'null'
   - url: https://docs.lunar.dev/additional-resources/faqs/faqIndex
     name: FAQs | Lunar Docs
@@ -145,7 +145,7 @@ common:
   - url: >-
       https://login.lunar.dev/u/login?state=hKFo2SBkZkoxMlV1VVFQQmZ3ejlTQjU2QWdteFBEbG1tSWNERaFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIFVCVnEySHI0MHlSLTdmRU0ydzBGeTd6aFlxLTFYUlhMo2NpZNkgQTZBOVRoUnJ6anp2eEx6cFUwRm5JZE1Id0xUUmdnSFE
     name: Sign in | Lunar.dev
-    type: SignUp
+    type: Signup
     description: 'null'
   - url: https://www.lunar.dev/privacy-policy
     name: Lunar | Privacy Policy
