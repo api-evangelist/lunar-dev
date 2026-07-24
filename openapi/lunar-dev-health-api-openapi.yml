@@ -1,0 +1,49 @@
+openapi: 3.1.0
+info:
+  title: Lunar.dev Gateway Admin Discovery Health API
+  description: The Lunar.dev Gateway Admin API provides administrative endpoints for managing and monitoring the Lunar API Consumption Gateway. The gateway acts as an egress proxy for third-party API traffic, providing visibility, control, and performance optimization. The admin API enables health monitoring, endpoint discovery, flow validation, and policy management for the running gateway instance.
+  version: 1.0.0
+  contact:
+    name: Lunar.dev
+    url: https://www.lunar.dev/
+  license:
+    name: MIT
+    url: https://github.com/TheLunarCompany/lunar/blob/main/LICENSE
+servers:
+- url: http://localhost:8040
+  description: Gateway Admin Health Server
+- url: http://localhost:8081
+  description: Gateway Admin Engine Server
+tags:
+- name: Health
+  description: Gateway health monitoring endpoints.
+paths:
+  /healthcheck:
+    get:
+      operationId: getHealthcheck
+      summary: Lunar.dev Check gateway health
+      description: Returns the health status of the Lunar Gateway. A 200 response indicates that the gateway is running and healthy.
+      tags:
+      - Health
+      responses:
+        '200':
+          description: Gateway is healthy and running.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthStatus'
+        '503':
+          description: Gateway is unhealthy or not ready.
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+          description: The health status of the gateway.
+          examples:
+          - healthy
+externalDocs:
+  description: Lunar.dev Documentation
+  url: https://docs.lunar.dev/
