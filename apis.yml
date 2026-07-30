@@ -1,68 +1,123 @@
 aid: lunar-dev
 url: https://raw.githubusercontent.com/api-evangelist/lunar-dev/refs/heads/main/apis.yml
 apis:
-  - aid: lunar-dev:gateway-admin
-    name: Lunar.dev Gateway Admin API
-    tags:
-      - AI Gateway
-      - Consumption Gateway
-      - Control
-      - Discovery
-      - Flows
-      - Health
-      - Integrations
-      - MCP Gateway
-      - Performance
-      - Platform
-      - Policies
-      - Visibility
-    humanURL: https://docs.lunar.dev/
-    properties:
-      - url: https://docs.lunar.dev/
-        type: Documentation
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/lunar-dev/refs/heads/main/openapi/lunar-dev-gateway-admin-openapi.yml
-        type: OpenAPI
-      - url: json-schema/health-status.json
-        type: JSONSchema
-      - url: json-schema/discovered-endpoint.json
-        type: JSONSchema
-      - url: json-schema/policy.json
-        type: JSONSchema
-      - url: json-schema/flow.json
-        type: JSONSchema
-      - url: json-schema/validation-result.json
-        type: JSONSchema
-      - url: json-ld/lunar-dev-context.jsonld
-        type: JSONLD
-    description: >-
-      The Lunar.dev Gateway Admin API provides administrative endpoints for managing and monitoring the Lunar API
-      Consumption Gateway. It enables health monitoring, endpoint discovery, flow validation, and policy management for
-      the running gateway instance.
-  - aid: lunar-dev:gateway-proxy
-    name: Lunar.dev Gateway Proxy API
-    tags:
-      - AI Gateway
-      - Consumption Gateway
-      - Egress
-      - Integrations
-      - MCP Gateway
-      - Platform
-      - Proxy
-      - Quota Management
-      - Rate Limiting
-      - Traffic Management
-    humanURL: https://docs.lunar.dev/
-    properties:
-      - url: https://docs.lunar.dev/
-        type: Documentation
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/lunar-dev/refs/heads/main/openapi/lunar-dev-gateway-proxy-openapi.yml
-        type: OpenAPI
-    description: >-
-      The Lunar.dev Gateway Proxy API handles routing of outbound egress API traffic through the Lunar Gateway. Client
-      applications send third-party API requests through this proxy, which provides traffic management, policy
-      enforcement, caching, rate limiting, quota management, and real-time observability.
+- aid: lunar-dev:lunar-dev-discovery-api
+  name: Lunar.dev Discovery API
+  description: API endpoint discovery and metrics.
+  humanURL: https://docs.lunar.dev/
+  tags:
+  - Discovery
+  properties:
+  - type: OpenAPI
+    url: openapi/lunar-dev-discovery-api-openapi.yml
+  - type: Documentation
+    url: https://docs.lunar.dev/
+  - type: JSONSchema
+    url: json-schema/health-status.json
+  - type: JSONSchema
+    url: json-schema/discovered-endpoint.json
+  - type: JSONSchema
+    url: json-schema/policy.json
+  - type: JSONSchema
+    url: json-schema/flow.json
+  - type: JSONSchema
+    url: json-schema/validation-result.json
+  - type: JSONLD
+    url: json-ld/lunar-dev-context.jsonld
+- aid: lunar-dev:lunar-dev-flows-api
+  name: Lunar.dev Flows API
+  description: Flow configuration management for traffic control.
+  humanURL: https://docs.lunar.dev/
+  tags:
+  - Flows
+  properties:
+  - type: OpenAPI
+    url: openapi/lunar-dev-flows-api-openapi.yml
+  - type: Documentation
+    url: https://docs.lunar.dev/
+  - type: JSONSchema
+    url: json-schema/health-status.json
+  - type: JSONSchema
+    url: json-schema/discovered-endpoint.json
+  - type: JSONSchema
+    url: json-schema/policy.json
+  - type: JSONSchema
+    url: json-schema/flow.json
+  - type: JSONSchema
+    url: json-schema/validation-result.json
+  - type: JSONLD
+    url: json-ld/lunar-dev-context.jsonld
+- aid: lunar-dev:lunar-dev-health-api
+  name: Lunar.dev Health API
+  description: Gateway health monitoring endpoints.
+  humanURL: https://docs.lunar.dev/
+  tags:
+  - Health
+  properties:
+  - type: OpenAPI
+    url: openapi/lunar-dev-health-api-openapi.yml
+  - type: Documentation
+    url: https://docs.lunar.dev/
+  - type: JSONSchema
+    url: json-schema/health-status.json
+  - type: JSONSchema
+    url: json-schema/discovered-endpoint.json
+  - type: JSONSchema
+    url: json-schema/policy.json
+  - type: JSONSchema
+    url: json-schema/flow.json
+  - type: JSONSchema
+    url: json-schema/validation-result.json
+  - type: JSONLD
+    url: json-ld/lunar-dev-context.jsonld
+- aid: lunar-dev:lunar-dev-policies-api
+  name: Lunar.dev Policies API
+  description: Policy management for the Lunar Gateway.
+  humanURL: https://docs.lunar.dev/
+  tags:
+  - Policies
+  properties:
+  - type: OpenAPI
+    url: openapi/lunar-dev-policies-api-openapi.yml
+  - type: Documentation
+    url: https://docs.lunar.dev/
+  - type: JSONSchema
+    url: json-schema/health-status.json
+  - type: JSONSchema
+    url: json-schema/discovered-endpoint.json
+  - type: JSONSchema
+    url: json-schema/policy.json
+  - type: JSONSchema
+    url: json-schema/flow.json
+  - type: JSONSchema
+    url: json-schema/validation-result.json
+  - type: JSONLD
+    url: json-ld/lunar-dev-context.jsonld
+- aid: lunar-dev:lunar-dev-proxy-api
+  name: Lunar.dev Proxy API
+  description: >-
+    Proxy endpoints for routing third-party API traffic through the Lunar Gateway with policy enforcement,
+    traffic controls, and observability.
+  humanURL: https://docs.lunar.dev/
+  tags:
+  - Proxy
+  properties:
+  - type: OpenAPI
+    url: openapi/lunar-dev-proxy-api-openapi.yml
+  - type: Documentation
+    url: https://docs.lunar.dev/
+  - type: JSONSchema
+    url: json-schema/health-status.json
+  - type: JSONSchema
+    url: json-schema/discovered-endpoint.json
+  - type: JSONSchema
+    url: json-schema/policy.json
+  - type: JSONSchema
+    url: json-schema/flow.json
+  - type: JSONSchema
+    url: json-schema/validation-result.json
+  - type: JSONLD
+    url: json-ld/lunar-dev-context.jsonld
 name: Lunar.dev
 tags:
   - AI Gateway
@@ -78,9 +133,23 @@ tags:
   - Visibility
   - Workflows
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/lunar-dev.png
 access: 3rd-Party
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/lunardev/overview
   - type: AgenticAccess
     url: agentic-access/lunar-dev-agentic-access.yml
   - type: DomainSecurity
