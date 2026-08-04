@@ -1,0 +1,248 @@
+{
+  "info": {
+    "_postman_id": "84ba380e-5b58-441f-a087-3cda95ca7056",
+    "name": "Lunar.dev Gateway Admin Discovery Flows API",
+    "description": "The Lunar.dev Gateway Admin API provides administrative endpoints for managing and monitoring the Lunar API Consumption Gateway. The gateway acts as an egress proxy for third-party API traffic, providing visibility, control, and performance optimization. The admin API enables health monitoring, endpoint discovery, flow validation, and policy management for the running gateway instance.\n\nContact Support:\n Name: Lunar.dev",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:08:12.000Z",
+    "updatedAt": "2026-07-28T02:08:12.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-84ba380e-5b58-441f-a087-3cda95ca7056"
+  },
+  "item": [
+    {
+      "name": "validate_flows",
+      "item": [
+        {
+          "name": "Lunar.dev Validate flows",
+          "id": "daf31ac9-64c2-4a05-9d30-0ba03f07d713",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/validate_flows",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "validate_flows"
+              ]
+            },
+            "description": "Validates the current flow configuration files for syntax and logical errors before deploying. Flows are YAML-based configurations that define how API requests and responses are processed in real time through the Lunar Gateway."
+          },
+          "response": [
+            {
+              "id": "14324276-5e6d-49ea-891d-b33cabde9856",
+              "name": "Flows are valid.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/validate_flows",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "validate_flows"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"valid\": \"<boolean>\",\n  \"errors\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T02:08:12.000Z",
+              "updatedAt": "2026-07-28T02:08:12.000Z",
+              "uid": "35240-14324276-5e6d-49ea-891d-b33cabde9856"
+            },
+            {
+              "id": "cd98d71a-45e1-4330-ba30-19cc50697c5e",
+              "name": "Flows contain validation errors.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/validate_flows",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "validate_flows"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"valid\": \"<boolean>\",\n  \"errors\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T02:08:12.000Z",
+              "updatedAt": "2026-07-28T02:08:12.000Z",
+              "uid": "35240-cd98d71a-45e1-4330-ba30-19cc50697c5e"
+            }
+          ],
+          "createdAt": "2026-07-28T02:08:12.000Z",
+          "updatedAt": "2026-07-28T02:08:12.000Z",
+          "uid": "35240-daf31ac9-64c2-4a05-9d30-0ba03f07d713"
+        }
+      ],
+      "id": "d33da534-a0ac-4c5e-9a82-0bd4ab70d7df",
+      "createdAt": "2026-07-28T02:08:12.000Z",
+      "updatedAt": "2026-07-28T02:08:12.000Z",
+      "uid": "35240-d33da534-a0ac-4c5e-9a82-0bd4ab70d7df"
+    },
+    {
+      "name": "apply_flows",
+      "item": [
+        {
+          "name": "Lunar.dev Apply flows",
+          "id": "d9eee511-ed79-42e7-a2e3-d6b17a01780f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/apply_flows",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "apply_flows"
+              ]
+            },
+            "description": "Applies the current flow configuration files to the running Lunar Gateway instance. Flows define traffic management rules including rate limiting, caching, retry mechanisms, quota enforcement, and request prioritization."
+          },
+          "response": [
+            {
+              "id": "c81028d2-ef1c-4a27-9888-05612a5c38e5",
+              "name": "Flows applied successfully.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/apply_flows",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "apply_flows"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"status\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:08:12.000Z",
+              "updatedAt": "2026-07-28T02:08:12.000Z",
+              "uid": "35240-c81028d2-ef1c-4a27-9888-05612a5c38e5"
+            },
+            {
+              "id": "5339e031-c7cd-418a-b907-b49adc97f768",
+              "name": "Invalid flow configuration.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/apply_flows",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "apply_flows"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"details\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:08:12.000Z",
+              "updatedAt": "2026-07-28T02:08:12.000Z",
+              "uid": "35240-5339e031-c7cd-418a-b907-b49adc97f768"
+            }
+          ],
+          "createdAt": "2026-07-28T02:08:12.000Z",
+          "updatedAt": "2026-07-28T02:08:12.000Z",
+          "uid": "35240-d9eee511-ed79-42e7-a2e3-d6b17a01780f"
+        }
+      ],
+      "id": "6a75f337-ad66-4941-87f2-b9e9e0d069c6",
+      "createdAt": "2026-07-28T02:08:12.000Z",
+      "updatedAt": "2026-07-28T02:08:12.000Z",
+      "uid": "35240-6a75f337-ad66-4941-87f2-b9e9e0d069c6"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8040"
+    }
+  ]
+}

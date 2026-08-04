@@ -1,0 +1,124 @@
+{
+  "info": {
+    "_postman_id": "b5e2493b-6fcb-4c2a-8562-2dc31d5f7512",
+    "name": "Lunar.dev Gateway Admin Discovery Health API",
+    "description": "The Lunar.dev Gateway Admin API provides administrative endpoints for managing and monitoring the Lunar API Consumption Gateway. The gateway acts as an egress proxy for third-party API traffic, providing visibility, control, and performance optimization. The admin API enables health monitoring, endpoint discovery, flow validation, and policy management for the running gateway instance.\n\nContact Support:\n Name: Lunar.dev",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:08:12.000Z",
+    "updatedAt": "2026-07-28T02:08:13.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b5e2493b-6fcb-4c2a-8562-2dc31d5f7512"
+  },
+  "item": [
+    {
+      "name": "healthcheck",
+      "item": [
+        {
+          "name": "Lunar.dev Check gateway health",
+          "id": "3d2035f3-a668-43ae-aec4-3ce00b6017ac",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/healthcheck",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "healthcheck"
+              ]
+            },
+            "description": "Returns the health status of the Lunar Gateway. A 200 response indicates that the gateway is running and healthy."
+          },
+          "response": [
+            {
+              "id": "9e0ddabe-7aae-4e14-b17d-8ca80edd4fb1",
+              "name": "Gateway is healthy and running.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/healthcheck",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "healthcheck"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"status\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:08:13.000Z",
+              "updatedAt": "2026-07-28T02:08:13.000Z",
+              "uid": "35240-9e0ddabe-7aae-4e14-b17d-8ca80edd4fb1"
+            },
+            {
+              "id": "2fe5b2f9-384b-412f-bb0a-2ca306f0e1a8",
+              "name": "Gateway is unhealthy or not ready.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/healthcheck",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "healthcheck"
+                  ]
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:08:13.000Z",
+              "updatedAt": "2026-07-28T02:08:13.000Z",
+              "uid": "35240-2fe5b2f9-384b-412f-bb0a-2ca306f0e1a8"
+            }
+          ],
+          "createdAt": "2026-07-28T02:08:13.000Z",
+          "updatedAt": "2026-07-28T02:08:13.000Z",
+          "uid": "35240-3d2035f3-a668-43ae-aec4-3ce00b6017ac"
+        }
+      ],
+      "id": "2f04fb07-cd80-459e-b304-72b5b11c2e79",
+      "createdAt": "2026-07-28T02:08:13.000Z",
+      "updatedAt": "2026-07-28T02:08:13.000Z",
+      "uid": "35240-2f04fb07-cd80-459e-b304-72b5b11c2e79"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8040"
+    }
+  ]
+}

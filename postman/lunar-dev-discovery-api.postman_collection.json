@@ -1,0 +1,97 @@
+{
+  "info": {
+    "_postman_id": "9fb77796-9c74-4639-a274-5fb25f9a9382",
+    "name": "Lunar.dev Gateway Admin Discovery API",
+    "description": "The Lunar.dev Gateway Admin API provides administrative endpoints for managing and monitoring the Lunar API Consumption Gateway. The gateway acts as an egress proxy for third-party API traffic, providing visibility, control, and performance optimization. The admin API enables health monitoring, endpoint discovery, flow validation, and policy management for the running gateway instance.\n\nContact Support:\n Name: Lunar.dev",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:08:11.000Z",
+    "updatedAt": "2026-07-28T02:08:11.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9fb77796-9c74-4639-a274-5fb25f9a9382"
+  },
+  "item": [
+    {
+      "name": "discover",
+      "item": [
+        {
+          "name": "Lunar.dev Discover API endpoints",
+          "id": "41ea3f02-dde8-469f-8e82-0822b1f29422",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/discover",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "discover"
+              ]
+            },
+            "description": "Returns a list of discovered API endpoints that have been observed passing through the Lunar Gateway. This includes endpoint metrics such as latency and status code distributions grouped by endpoint. Even when no policies are defined, the gateway generates discovered endpoint metrics automatically."
+          },
+          "response": [
+            {
+              "id": "43ea237b-00ec-412e-b032-511c061e6743",
+              "name": "Successfully retrieved discovered endpoints.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/discover",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "discover"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"endpoints\": [\n    {\n      \"method\": \"<string>\",\n      \"url\": \"<string>\",\n      \"status_codes\": {\n        \"Ut3\": \"<integer>\"\n      },\n      \"count\": \"<integer>\",\n      \"average_latency_ms\": \"<number>\"\n    },\n    {\n      \"method\": \"<string>\",\n      \"url\": \"<string>\",\n      \"status_codes\": {\n        \"aliquaa\": \"<integer>\",\n        \"nostrud61\": \"<integer>\"\n      },\n      \"count\": \"<integer>\",\n      \"average_latency_ms\": \"<number>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:08:11.000Z",
+              "updatedAt": "2026-07-28T02:08:11.000Z",
+              "uid": "35240-43ea237b-00ec-412e-b032-511c061e6743"
+            }
+          ],
+          "createdAt": "2026-07-28T02:08:11.000Z",
+          "updatedAt": "2026-07-28T02:08:11.000Z",
+          "uid": "35240-41ea3f02-dde8-469f-8e82-0822b1f29422"
+        }
+      ],
+      "id": "f011393d-ed1f-4313-8537-da2bc8e9cdaa",
+      "createdAt": "2026-07-28T02:08:11.000Z",
+      "updatedAt": "2026-07-28T02:08:11.000Z",
+      "uid": "35240-f011393d-ed1f-4313-8537-da2bc8e9cdaa"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8040"
+    }
+  ]
+}
